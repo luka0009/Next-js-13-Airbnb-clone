@@ -3,12 +3,15 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 type Props = {}
 
 const Navbar = ({}: Props) => {
+  const registerModal = useRegisterModal(); 
   return (
-    <div className='fixed w-full bg-white z-10 shadow-sm'>
+    <>    {(
+    <div className={`fixed w-full bg-white z-10 shadow-sm ${registerModal.isOpen && 'hidden'}`}>
         <div
         className='py-4 border-b-[1px]'
         >
@@ -20,7 +23,8 @@ const Navbar = ({}: Props) => {
              </div>
            </Container> 
         </div>
-    </div>
+    </div>)}
+    </>
   )
 }
 

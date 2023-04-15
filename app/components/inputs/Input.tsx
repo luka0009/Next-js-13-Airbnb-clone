@@ -43,8 +43,6 @@ const Input = ({
           w-full
           p-3
           pt-5
-          focus:pb-1
-          focus:pt-5
           bg-white 
           border-2
           rounded-md
@@ -70,8 +68,7 @@ const Input = ({
           ${formatPrice ? 'left-9' : 'left-4'}
           peer-placeholder-shown:scale-100 
           peer-placeholder-shown:translate-y-0 
-          peer-focus:scale-[0.7]    
-          peer-focus:-translate-y-3
+          focus:scale-70
           focus: text-zinc-600
           ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
         `}

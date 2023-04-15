@@ -99,11 +99,11 @@ const RegisterModal = (props: Props) => {
           font-light
         "
       >
-        <p>Already have an account?
+        <p className="text-black font-semibold">Already have an account?
           <span 
             onClick={registerModal.onClose} 
             className="
-              text-neutral-800
+              text-black
               cursor-pointer 
               hover:underline
             "
