@@ -4,15 +4,21 @@ import Avatar from "../Avatar";
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
+import {signOut} from 'next-auth/react';
 
-type Props = {};
+type UserMenuProps = {
+  currentUser?: User | null;
+};
 
-const UserMenu = (props: Props) => {
+const UserMenu = ({ currentUser }: UserMenuProps) => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => {
-    setIsOpen(isOpen => !isOpen);
-  }
+    setIsOpen((isOpen) => !isOpen);
+  };
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -59,13 +65,26 @@ const UserMenu = (props: Props) => {
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
-            <div className="flex flex-col cursor-pointer">
+          <div className="flex flex-col cursor-pointer">
+            {currentUser ? (
               <>
-              <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+                <MenuItem onClick={() => {}} label="Trips" />
+                <MenuItem onClick={() => {}} label="Favorites" />
+                <MenuItem onClick={() => {}} label="Reservations" />
+                <MenuItem onClick={() => {}} label="Properties" />
+                <MenuItem onClick={() => {}} label="Home" />
+                <hr className="border-1 border-black" />{" "}
+                <MenuItem onClick={() => signOut()} label="Log out" />
               </>
-            </div>
-        </div>)}
+            ) : (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

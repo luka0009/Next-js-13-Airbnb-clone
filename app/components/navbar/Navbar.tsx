@@ -1,31 +1,39 @@
-'use client';
+"use client";
+import { User } from "@prisma/client";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
-type Props = {}
+type NavbarProps = {
+  currentUser?: User | null;
+};
 
-const Navbar = ({}: Props) => {
-  const registerModal = useRegisterModal(); 
+const Navbar = ({ currentUser }: NavbarProps) => {
+  const registerModal = useRegisterModal();
   return (
-    <>    {(
-    <div className={`fixed w-full bg-white z-10 shadow-sm ${registerModal.isOpen && 'hidden'}`}>
+    <>
+      {" "}
+      {
         <div
-        className='py-4 border-b-[1px]'
+          className={`fixed w-full bg-white z-10 shadow-sm ${
+            registerModal.isOpen && "hidden"
+          }`}
         >
-           <Container>
-             <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
+          <div className="py-4 border-b-[1px]">
+            <Container>
+              <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
                 <Logo />
                 <Search />
-                <UserMenu />
-             </div>
-           </Container> 
+                <UserMenu currentUser={currentUser}/>
+              </div>
+            </Container>
+          </div>
         </div>
-    </div>)}
+      }
     </>
-  )
-}
+  );
+};
 
 export default Navbar;
