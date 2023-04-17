@@ -12,6 +12,9 @@ const nextConfig = {
         pathname: '/howto/img_avatar.png',
       },
     ],
+    domains: [
+      "lh3.googleusercontent.com"
+    ],
   },
 }
 

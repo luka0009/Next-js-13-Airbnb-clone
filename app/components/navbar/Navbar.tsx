@@ -5,9 +5,11 @@ import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import { SafeUser } from "@/app/types";
+import Categories from "./Categories";
 
 type NavbarProps = {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 };
 
 const Navbar = ({ currentUser }: NavbarProps) => {
@@ -30,6 +32,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
               </div>
             </Container>
           </div>
+          <Categories />
         </div>
       }
     </>
