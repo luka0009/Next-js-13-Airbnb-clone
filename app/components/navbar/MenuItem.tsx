@@ -2,8 +2,8 @@
 'use client'
 
 type Props = {
-    onClick: () => void;
-    label: string
+  onClick: () => void;
+  label: string;
 }
 
 const MenuItem = ({onClick, label}: Props) => {

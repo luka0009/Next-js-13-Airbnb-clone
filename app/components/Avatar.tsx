@@ -3,7 +3,6 @@ import Image from "next/image";
 
 
 const Avatar = ({ src }: any) => {
-  console.log('srv', src.image);
   return (
     <div>
       <Image

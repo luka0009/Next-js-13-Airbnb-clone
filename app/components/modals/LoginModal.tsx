@@ -12,12 +12,14 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 type Props = {};
 
 const LoginModal = (props: Props) => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -52,6 +54,11 @@ const LoginModal = (props: Props) => {
         }
     });
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -102,7 +109,7 @@ const LoginModal = (props: Props) => {
         <p className="text-black font-semibold">
           Don't have an account?
           <span
-            onClick={loginModal.onClose}
+            onClick={toggle}
             className="
               text-black
               cursor-pointer 

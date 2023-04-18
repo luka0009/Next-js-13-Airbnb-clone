@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Button from "../Button";
 import Heading from "../Heading";
@@ -16,6 +17,7 @@ type Props = {};
 
 const RegisterModal = (props: Props) => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -41,7 +43,12 @@ const RegisterModal = (props: Props) => {
             toast.error("Something went wrong");
         })
         .finally(() => setIsLoading(false));
-  }
+  };
+
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -102,7 +109,7 @@ const RegisterModal = (props: Props) => {
       >
         <p className="text-black font-semibold">Already have an account?
           <span 
-            onClick={registerModal.onClose} 
+            onClick={toggle} 
             className="
               text-black
               cursor-pointer 
