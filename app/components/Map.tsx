@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import useFocus from "../hooks/useFocus";
 
 //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -20,8 +21,12 @@ interface MapProps {
 }
 
 const Map = ({ center }: MapProps) => {
+  const focus = useFocus();
+  const isFocused = focus.isFocused;
+  console.log(isFocused);
   return (
-    <MapContainer
+    <>
+    {!isFocused ? <MapContainer
     center={center as L.LatLngExpression || [42.213262, 42.237396]}
     zoom={center ? 4 : 2}
     scrollWheelZoom={false}
@@ -36,7 +41,8 @@ const Map = ({ center }: MapProps) => {
         position={center as L.LatLngExpression}
         />
     )}
-    </MapContainer>
+    </MapContainer> : <p>...</p>}
+    </>
     );
 };
 

@@ -1,5 +1,7 @@
 "use client";
 import useCountries from "@/app/hooks/useCountries";
+import useFocus from "@/app/hooks/useFocus";
+import { useState } from "react";
 import Select from "react-select";
 
 export type CountrySelectValue = {
@@ -16,11 +18,24 @@ interface CountrySelectProps {
 }
 
 const CountrySelect = ({ value, onChange }: CountrySelectProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const focus = useFocus();
   const { getAll } = useCountries();
+
+  const handleFocus = () => {
+    focus.onFocused();
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    focus.onBlur();
+    setIsFocused(false);
+  };
+  // console.log(isFocused);
   return (
     <div>
       <Select
-        placeholder="Write the name of the country and hit enter"
+        placeholder="Select country"
         isClearable
         options={getAll()}
         value={value}
@@ -35,19 +50,21 @@ const CountrySelect = ({ value, onChange }: CountrySelectProps) => {
           </div>
         )}
         classNames={{
-            control: () => 'p-1 b-2',
-            input: () => 'text-lg',
-            option: () => 'text-lg'
+          control: () => "p-1 b-2",
+          input: () => "text-lg",
+          option: () => "text-lg",
         }}
         theme={(theme) => ({
-            ...theme,
-            borderRadius: 6,
-            colors: {
-              ...theme.colors,
-              primary: 'black',
-              primary25: '#ffe4e6'
-            }
-          })}
+          ...theme,
+          borderRadius: 6,
+          colors: {
+            ...theme.colors,
+            primary: "black",
+            primary25: "#ffe4e6",
+          },
+        })}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
     </div>
   );
