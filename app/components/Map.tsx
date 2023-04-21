@@ -41,7 +41,7 @@ const Map = ({ center }: MapProps) => {
         position={center as L.LatLngExpression}
         />
     )}
-    </MapContainer> : <p>...</p>}
+    </MapContainer> : <p className="underline">Click here to show your location on map</p>}
     </>
     );
 };
