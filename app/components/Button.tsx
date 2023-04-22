@@ -41,6 +41,7 @@ const Button = ({
       ${small ? "font-light" : "font-semibold"}
       ${small ? "border-[1px]" : "border-2"}
       ${padding ? 'py-3 text-[15px] font-bold' : ''}
+      py-2 text-[17px]
     `}
     >
       {Icon && (

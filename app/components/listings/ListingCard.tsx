@@ -116,7 +116,7 @@ const ListingCard = ({
         </div>
         {onAction && actionLabel && (
           <Button
-            padding={true}
+            padding={false}
             disabled={disabled}
             small
             label={actionLabel} 

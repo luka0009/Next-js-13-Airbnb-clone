@@ -81,9 +81,9 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => router.push('/trips')} label="Trips" />
+                <MenuItem onClick={() => router.push('/trips')} label="My Trips" />
                 <MenuItem onClick={() => {}} label="Favorites" />
-                <MenuItem onClick={() => {}} label="Reservations" />
+                <MenuItem onClick={() => router.push('/reservations')} label="Reservations" />
                 <MenuItem onClick={() => {}} label="Properties" />
                 <MenuItem onClick={rentModal.onOpen} label="Airbnb Your Home" />
                 <hr className="border-1 border-black" />{" "}
