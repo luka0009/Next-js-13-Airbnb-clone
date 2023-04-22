@@ -23,7 +23,6 @@ interface MapProps {
 const Map = ({ center }: MapProps) => {
   const focus = useFocus();
   const isFocused = focus.isFocused;
-  console.log(isFocused);
   return (
     <>
     {!isFocused ? <MapContainer
