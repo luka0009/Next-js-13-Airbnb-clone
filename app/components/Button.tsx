@@ -9,6 +9,7 @@ interface ButtonProps {
   outline?: boolean;
   small?: boolean;
   icon?: IconType;
+  padding?: boolean,
 }
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   outline,
   small,
   icon: Icon,
+  padding,
 }: ButtonProps) => {
   return (
     <button
@@ -38,6 +40,7 @@ const Button = ({
       ${small ? "py-1" : "py-3"}
       ${small ? "font-light" : "font-semibold"}
       ${small ? "border-[1px]" : "border-2"}
+      ${padding ? 'py-3 text-[15px] font-bold' : ''}
     `}
     >
       {Icon && (
