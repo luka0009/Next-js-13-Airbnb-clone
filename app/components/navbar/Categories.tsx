@@ -10,7 +10,8 @@ import {
   GiCaveEntrance,
   GiForestCamp,
   GiIsland,
-  GiWindmill,
+  GiMountains,
+  GiHouse,
 } from "react-icons/gi";
 import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
@@ -27,9 +28,9 @@ export const categories = [
     description: "This property is close to the beach!",
   },
   {
-    label: "Windmills",
-    icon: GiWindmill,
-    description: "This property is has windmills!",
+    label: "Tiny Homes",
+    icon: GiHouse,
+    description: "This property features place with tiny home!",
   },
   {
     label: "Design",
@@ -67,9 +68,9 @@ export const categories = [
     description: "This property is an ancient castle!",
   },
   {
-    label: "Caves",
+    label: "Cabins",
     icon: GiCaveEntrance,
-    description: "This property is in a spooky cave!",
+    description: "This property is a cabin!",
   },
   {
     label: "Camping",
@@ -87,9 +88,9 @@ export const categories = [
     description: "This property is in the desert!",
   },
   {
-    label: "Barns",
-    icon: GiBarn,
-    description: "This property is in a barn!",
+    label: "Mountain",
+    icon: GiMountains,
+    description: "This property is in Mountains!",
   },
   {
     label: "Luxe",
