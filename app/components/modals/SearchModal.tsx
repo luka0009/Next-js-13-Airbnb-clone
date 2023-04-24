@@ -143,7 +143,7 @@ const SearchModal = (props: Props) => {
       <div className="flex flex-col gap-8">
         <Heading
           title="When do you plan to go?"
-          subtitle="Make sure everyone is free!"
+          subtitle="Make sure There are no prior reservations in that date range!"
         />
         <Calendar
           value={dateRange}
