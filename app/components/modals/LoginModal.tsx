@@ -107,7 +107,7 @@ const LoginModal = (props: Props) => {
         "
       >
         <p className="text-black font-semibold">
-          Don't have an account?
+          Do not have an account?
           <span
             onClick={toggle}
             className="
