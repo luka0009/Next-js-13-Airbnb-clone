@@ -1,17 +1,16 @@
-import { Inter } from "next/font/google";
-import Container from "./components/Container";
-import EmptyState from "./components/EmptyState";
-import getListings, { IListingsParams } from "./actions/getListings";
-import ListingCard from "./components/listings/ListingCard";
-import getCurrentUser from "./actions/getCurrentUser";
-import { safeListing } from "./types";
+import Container from "@/app/components/Container";
+import ListingCard from "@/app/components/listings/ListingCard";
+import EmptyState from "@/app/components/EmptyState";
+
+import getListings, { 
+  IListingsParams
+} from "@/app/actions/getListings";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 
-const inter = Inter({ subsets: ["latin"] });
-
 interface HomeProps {
-  searchParams: IListingsParams;
-}
+  searchParams: IListingsParams
+};
 
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
@@ -28,30 +27,29 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <ClientOnly>
       <Container>
-        <div
+        <div 
           className="
-          pt-24
-          grid 
-          grid-cols-1 
-          sm:grid-cols-2 
-          md:grid-cols-2 
-          lg:grid-cols-3
-          xl:grid-cols-3
-          2xl:grid-cols-4
-          gap-24
+            pt-24
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            md:grid-cols-2 
+            lg:grid-cols-3
+            xl:grid-cols-3
+            2xl:grid-cols-4
+            gap-8
           "
         >
           {listings.map((listing: any) => (
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
-              data={listing} 
-              actionId={""}            />
+              data={listing} actionId={""}            />
           ))}
         </div>
       </Container>
     </ClientOnly>
-  );
-};
+  )
+}
 
 export default Home;
