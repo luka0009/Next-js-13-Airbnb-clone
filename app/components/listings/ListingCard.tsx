@@ -84,7 +84,8 @@ const ListingCard = ({
               h-full 
               w-full 
               group-hover:scale-110 
-              transition
+              transition 
+              duration-1000
             "
             src={data.imageSrc}
             alt="Listing"
