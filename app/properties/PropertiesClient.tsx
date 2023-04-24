@@ -51,7 +51,7 @@ const PropertiesClient = ({ listings, currentUser }: PropertiesClientProps) => {
           lg:grid-cols-3
           xl:grid-cols-3
           2xl:grid-cols-4
-          gap-8
+          gap-24
         "
       >
         {listings.map((listing: any) => (
