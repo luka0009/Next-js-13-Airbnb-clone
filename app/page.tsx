@@ -9,7 +9,7 @@ import { safeListing } from "./types";
 const inter = Inter({ subsets: ["latin"] });
 
 interface HomeProps {
-  searchParams: IListingsParams,
+  searchParams: IListingsParams
 };
 
 const Home = async ({ searchParams }: HomeProps) => {
