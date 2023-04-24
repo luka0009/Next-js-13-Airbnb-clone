@@ -15,12 +15,12 @@ interface HomeProps {
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-  const isEmpty = listings.length === 0;
 
-  if (isEmpty) {
-    return <EmptyState showReset />;
+  if (listings.length === 0) {
+    return (
+        <EmptyState showReset />
+    );
   }
-
 
   return (
     <>
