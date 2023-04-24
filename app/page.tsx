@@ -5,12 +5,13 @@ import getListings, { IListingsParams } from "./actions/getListings";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 import { safeListing } from "./types";
+import ClientOnly from "./components/ClientOnly";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface HomeProps {
-  searchParams: IListingsParams
-};
+  searchParams: IListingsParams;
+}
 
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
@@ -18,37 +19,38 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   if (listings.length === 0) {
     return (
+      <ClientOnly>
         <EmptyState showReset />
+      </ClientOnly>
     );
   }
 
   return (
-    <>
+    <ClientOnly>
       <Container>
-      <div 
+        <div
           className="
-            pt-24
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-2 
-            lg:grid-cols-3
-            xl:grid-cols-3
-            2xl:grid-cols-4
-            gap-24
+          pt-24
+          grid 
+          grid-cols-1 
+          sm:grid-cols-2 
+          md:grid-cols-2 
+          lg:grid-cols-3
+          xl:grid-cols-3
+          2xl:grid-cols-4
+          gap-24
           "
         >
-          {listings.map((listing: safeListing) => (
+          {listings.map((listing: any) => (
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing} 
-              actionId={""}           
-              />
+              actionId={""}            />
           ))}
         </div>
       </Container>
-    </>
+    </ClientOnly>
   );
 };
 
