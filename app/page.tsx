@@ -21,6 +21,7 @@ const Home = async ({ searchParams }: HomeProps) => {
     return <EmptyState showReset />;
   }
 
+
   return (
     <>
       <Container>

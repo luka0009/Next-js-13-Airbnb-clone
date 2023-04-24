@@ -28,7 +28,7 @@ export const categories = [
     description: "This property is close to the beach!",
   },
   {
-    label: "Tiny Homes",
+    label: "Tiny",
     icon: GiHouse,
     description: "This property features place with tiny home!",
   },
